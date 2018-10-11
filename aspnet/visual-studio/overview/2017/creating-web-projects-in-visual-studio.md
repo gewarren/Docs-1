@@ -13,104 +13,56 @@ Creating ASP.NET Web Projects in Visual Studio 2013
 ====================
 by [Tom Dykstra](https://github.com/tdykstra)
 
-> This topic explains the options for creating ASP.NET web projects in Visual Studio 2013 with Update 3
-> 
-> Here are some of the new features for web development compared to earlier versions of Visual Studio:
-> 
-> - A simple UI for creating projects that offer [support for multiple ASP.NET frameworks](#add) (Web Forms, MVC, and Web API).
-> - [ASP.NET Identity](#indauth), a new ASP.NET membership system that works the same in all ASP.NET frameworks and works with web hosting software other than IIS.
-> - The use of [Bootstrap](#bootstrap) to provide responsive design and theming capabilities.
-> - New features for Web Forms that used to be offered only for MVC, such as [automatic test project creation](#testproj) and an [Intranet site template](#winauth).
-> 
-> For information about how to create web projects for Azure Cloud Services or Azure Mobile Services, see [Get Started with Azure Cloud Services and ASP.NET](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) and [Creating a Leaderboard App with Azure Mobile Services .NET Backend](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/).
+> This topic explains the options for creating ASP.NET web projects in Visual Studio 2017.
+>
+> For information about how to create web projects for Azure Cloud Services, see [Get Started with Azure Cloud Services and ASP.NET](/azure/cloud-services/cloud-services-dotnet-get-started).
 
-
-<a id="prerequisites"></a>
 ## Prerequisites
 
-This article applies to [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566) with [Update 3](https://go.microsoft.com/fwlink/?linkid=397827&amp;clcid=0x409) installed.
+This article applies to [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017). Make sure you install the **ASP.NET and web development** workload, which is a set of components for building web applications.
 
-<a id="wap"></a>
-## Web application projects versus web site projects
+![ASP.NET and web development workload in Visual Studio](creating-web-projects-in-visual-studio/_static/aspnet-web-dev-workload.png)
 
-ASP.NET gives you a choice between two kinds of web projects: *web application projects* and *web site projects*. We recommend web application projects for new development, and this article applies only to web application projects. For more information, see [Web Application Projects versus Web Site Projects in Visual Studio](https://msdn.microsoft.com/library/dd547590(v=vs.120).aspx) on the MSDN site.
-
-<a id="overview"></a>
 ## Overview of web application project creation
 
 The following steps show how to create a web project:
 
-1. Click **New Project** in the **Start** page or in the **File** menu.
-2. In the **New Project** dialog, click **Web** in the left pane and **ASP.NET Web Application** in the middle pane.
+1. Choose **New Project** on the **Start** page or from the **File** menu.
+2. In the **New Project** dialog, click **Web** in the left pane and **ASP.NET Web Application (.NET Framework)** in the middle pane.
 
-    ![New Project dialog](creating-web-projects-in-visual-studio/_static/image1.png)
+    ![New Project dialog in Visual Studio](creating-web-projects-in-visual-studio/_static/new-project-dialog.png)
 
-    You can choose **Cloud** in the left pane to create an [Azure Cloud Service](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy), [Azure Mobile Service](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx), or [Azure WebJob](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs). This topic doesn't cover those templates.
-3. In the right pane, click the **Add Application Insights to Project** check box if you want health and usage monitoring for your application. For more information, see [Monitor performance in web applications](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/).
-4. Specify project **Name**, **Location**, and other options, and then click **OK**.
+3. Specify a project **Name**, **Location**, and other options, and then choose **OK**.
 
     The **New ASP.NET Project** dialog appears.
 
-    ![New Project dialog](creating-web-projects-in-visual-studio/_static/image2.png)
-5. Click a template.
+    ![New Project dialog](creating-web-projects-in-visual-studio/_static/new-aspnet-web-app-dialog.png)
 
-    ![Select a template](creating-web-projects-in-visual-studio/_static/image3.png)
-6. If you want to add support for additional frameworks not included in the template, click the appropriate check box. (In the example shown, you could add MVC and/or Web API to a Web Forms project.)
+4. Choose a template, and specify whether to add support for additional frameworks that aren't included in the template. For example, you can add MVC or Web API to a Web Forms project.
 
-    ![Add frameworks](creating-web-projects-in-visual-studio/_static/image4.png)
-7. <a id="testproj"></a>If you want to add a unit test project, click **Add unit tests**.
+5. <a id="testproj"></a>If you want to add a unit test project, choose **Add unit tests**.
 
     ![Add unit tests](creating-web-projects-in-visual-studio/_static/image5.png)
-8. If you want a different authentication method than what the template provides by default, click **Change Authentication**.
 
-    ![Configure authentication button](creating-web-projects-in-visual-studio/_static/image6.png)
+8. If you want a different authentication method than what the template provides by default, choose **Change Authentication**.
 
-    ![Configure authentication dialog](creating-web-projects-in-visual-studio/_static/image7.png)
+    ![Configure authentication dialog](creating-web-projects-in-visual-studio/_static/change-authentication-dialog.png)
 
-<a id="azurenewproj"></a>
-### Create a web app or virtual machine in Azure
+The remainder of this article provides more information about the available templates and their options. The article also introduces Bootstrap, which is the layout and theming framework used in the templates.
 
-Visual Studio includes features that make it easy to work with Azure services for hosting web applications. For example, you can do all of the following right from the Visual Studio IDE:
+## Visual Studio web project templates
 
-- Create and manage web apps or virtual machines that make your application available over the Internet.
-- View logs created by the application as it runs in the cloud.
-- Run in debug mode remotely while the application runs in the cloud.
-- Viiew and manage other Azure services such as SQL databases.
+Visual Studio uses templates to create projects. A project template can create files and folders in the new project, install NuGet packages, and provide sample code for a rudimentary working application. Web project templates implement the latest web standards. They intend to demonstrate best practices for how to use ASP.NET technologies and give you a jump start on creating your own application.
 
-You can [create an Azure account](https://www.windowsazure.com/pricing/free-trial/) that includes basic services such as web apps for free, and if you are an MSDN subscriber you can [activate benefits](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) that give you monthly credits toward additional Azure services. 
-
-By default the **New ASP.NET Project** dialog box enables you to create a web app or virtual machine for a new web project. If you don't want to create a new web app or virtual machine, clear the **Host in the cloud** check box.
-
-![Create remote resources](creating-web-projects-in-visual-studio/_static/image8.png)
-
-The check box caption might be **Host in the cloud** or **Create remote resources**, and in either case the effect is the same. If you leave the check box selected, Visual Studio creates a web app in Azure App Service by default. You can use the drop-down box to change that to a **Virtual Machine** if you prefer. If you're not already signed in to Azure, you're prompted for Azure credentials. After you sign in, a dialog box enables you to configure the resources that Visual Studio will create for your project. The following illustration shows the dialog for a web app; different options appear if you choose to create a virtual machine.
-
-![Configure Azure App Settings](creating-web-projects-in-visual-studio/_static/image9.png)
-
-For more information about how to use this process for creating Azure resources, see [Get Started with Azure and ASP.NET](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet) and [Creating a virtual machine for a web site with Visual Studio](https://azure.microsoft.com/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell/).
-
-The remainder of this article provides more information about the available templates and their options. The article also introduces Bootstrap, the layout and theming framework used in the templates.
-
-<a id="vs2013"></a>
-## Visual Studio 2013 Web Project Templates
-
-Visual Studio uses templates to create web projects. A project template can create files and folders in the new project, install NuGet packages, and provide sample code for a rudimentary working application. Templates implement the latest web standards and are intended to demonstrate best practices for how to use ASP.NET technologies as well as give you a jump start on creating your own application.
-
-Visual Studio 2013 provides the following choices for web project templates for projects that target .NET 4.5 or later versions of the .NET framework:
+Visual Studio 2017 provides the following choices for web project templates for projects that target .NET 4.5 or later versions of the .NET Framework:
 
 - [Empty template](#empty)
 - [Web Forms template](#wf)
 - [MVC template](#mvc)
 - [Web API template](#webapi)
 - [Single Page Application template](#spa)
-- [Azure Mobile Service template](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
-- [Visual Studio 2012 Templates](#vs2012)
-
-You can also install a Visual Studio extension that provides a [Facebook template](#facebook).
-
-For information about how to create projects that target .NET 4, see [Visual Studio 2012 Templates](#vs2012) later in this topic.
-
-For information about how to create ASP.NET applications for mobile clients, see [Mobile Support in ASP.NET](../../../mobile/index.md).
+- Azure API App
+- Azure Mobile App - requires the **Azure development** workload
 
 <a id="empty"></a>
 ### Empty Template
@@ -191,34 +143,10 @@ For more information about ASP.NET Single Page Applications, and about additiona
 - [Understanding Security Features in the SPA Template for VS2013 RC](https://blogs.msdn.com/b/webdev/archive/2013/09/20/understanding-security-features-in-spa-template.aspx)
 - [Single-Page Applications: Build Modern, Responsive Web Apps with ASP.NET](https://msdn.microsoft.com/magazine/dn463786.aspx)
 
-<a id="facebook"></a>
-### Facebook Template
-
-You can install a [Visual Studio extension that provides a Facebook template](https://go.microsoft.com/fwlink/?LinkID=509965&amp;clcid=0x409). This template creates a sample application that is designed to run inside the Facebook web site. It is based on ASP.NET MVC and uses Web API for real-time update functionality.
-
-No authentication options are available for the Facebook template because Facebook applications run within the Facebook site and rely on Facebook's authentication.
-
-For more information about ASP.NET Facebook applications, see [Updating the MVC Facebook API](https://blogs.msdn.com/b/webdev/archive/2014/06/10/updating-the-mvc-facebook-api.aspx).
-
-<a id="vs2012"></a>
-### Visual Studio 2012 Templates
-
-The Visual Studio 2013 web project creation dialog does not provide access to some templates that were available in Visual Studio 2012. If you want to use one of these templates, you can click the Visual Studio 2012 node in the left pane of the Visual Studio New Project dialog box.
-
-![Visual Studio 2012 templates](creating-web-projects-in-visual-studio/_static/image15.png)
-
-The **Visual Studio 2012** node lets you choose the following web templates that you don't have access to in the default list of templates for Visual Studio 2013:
-
-- ASP.NET MVC 4 Web Application
-- ASP.NET Dynamic Data Entities Web Application
-- ASP.NET AJAX Server Control
-- ASP.NET AJAX Server Control Extender
-- ASP.NET Server Control
-
 <a id="bootstrap"></a>
-## Bootstrap in the Visual Studio 2013 web project templates
+## Bootstrap in the Visual Studio web project templates
 
-The Visual Studio 2013 project templates use [Bootstrap](http://getbootstrap.com/), a layout and theming framework created by Twitter. Bootstrap uses CSS3 to provide responsive design, which means layouts can dynamically adapt to different browser window sizes. For example, in a wide browser window the home page created by the Web Forms template looks like the following illustration:
+The Visual Studio project templates use [Bootstrap](http://getbootstrap.com/), a layout and theming framework created by Twitter. Bootstrap uses CSS3 to provide responsive design, which means layouts can dynamically adapt to different browser window sizes. For example, in a wide browser window the home page created by the Web Forms template looks like the following illustration:
 
 ![Web Forms template app home page](creating-web-projects-in-visual-studio/_static/image16.png)
 
@@ -278,14 +206,13 @@ Installs MVC, Razor, and WebPages NuGet packages, creates empty *App\_Data*, *Co
 
 Installs WebApi and Newtonsoft.Json NuGet packages, creates empty *App\_Data*, *Controllers*, and *Models* folders, creates *App\_Start* folder with *WebApiConfig.cs* file, and creates *Global.asax* file.
 
-<a id="auth"></a>
 ## Authentication Methods
 
-Visual Studio 2013 offers several authentication options for the Web Forms, MVC, and Web API templates:
+Visual Studio 2017 offers several authentication options for the Web Forms, MVC, and Web API templates:
 
 - [No Authentication](#noauth)
 - [Individual User Accounts](#indauth) (ASP.NET Identity, formerly known as ASP.NET membership)
-- [Organizational Accounts](#orgauth) (Windows Server Active Directory or Azure Active Directory)
+- [Work or School Accounts](#orgauth) (Windows Server Active Directory or Azure Active Directory)
 - [Windows Authentication](#winauth) (Intranet)
 
 ![Configure authentication dialog](creating-web-projects-in-visual-studio/_static/image23.png)
@@ -294,12 +221,12 @@ Visual Studio 2013 offers several authentication options for the Web Forms, MVC,
 
 ### No Authentication
 
-If you select **No Authentication**, the sample application will contain no web pages for logging in, no UI indicating who is logged in, no entity classes for a membership database, and no connection string for a membership database.
+If you select **No Authentication**, the sample application contains no web pages for logging in, no user interface elements that show who's logged in, no entity classes for a membership database, and no connection string for a membership database.
 
 <a id="indauth"></a>
 ### Individual User Accounts
 
-If you select **Individual User Accounts**, the sample application will be configured to use ASP.NET Identity (formerly known as ASP.NET membership) for user authentication. ASP.NET Identity enables a user to register an account, by creating a username and password on the site or by signing in with social providers such as Facebook, Google, Microsoft Account, or Twitter. The default data store for user profiles in ASP.NET Identity is a SQL Server LocalDB database, which you can deploy to SQL Server or Azure SQL Database for the production site.
+If you select **Individual User Accounts**, the sample application is configured to use ASP.NET Identity (formerly known as ASP.NET membership) for user authentication. ASP.NET Identity enables a user to register an account, by creating a username and password on the site or by signing in with social providers such as Facebook, Google, Microsoft Account, or Twitter. The default data store for user profiles in ASP.NET Identity is a SQL Server LocalDB database, which you can deploy to SQL Server or Azure SQL Database for the production site.
 
 In Visual Studio 2013 these features are the same as in Visual Studio 2012, but the underlying code for the ASP.NET membership system has been rewritten. Advantages of the new code base include the following:
 
@@ -318,19 +245,19 @@ For more information about the Individual User Accounts option, see the followin
 - [Adding External Logins to your ASP.NET application in Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
 
 <a id="orgauth"></a>
-### Organizational Accounts
+### Work or School Accounts
 
-If you select **Organizational Accounts**, the sample application will be configured to use Windows Identity Foundation (WIF) for authentication based on user accounts in Azure Active Directory (Azure AD, which includes Office 365) or Windows Server Active Directory. For more information, see [Organizational account authentication options](#orgauthoptions) later in this topic.
+If you select **Work or School Accounts**, the sample application is configured to use Windows Identity Foundation (WIF) for authentication based on user accounts in Azure Active Directory (Azure AD, which includes Office 365) or Windows Server Active Directory. For more information, see [Organizational account authentication options](#orgauthoptions) later in this topic.
 
 <a id="winauth"></a>
 ### Windows Authentication
 
-If you select **Windows Authentication**, the sample application will be configured to use the Windows Authentication IIS module for authentication. The application will display the domain and user ID of the Active directory or local machine account that is logged into Windows but won't include user registration or log-in UI. This option is intended for Intranet web sites.
+If you select **Windows Authentication**, the sample application is configured to use the Windows Authentication IIS module for authentication. The application will display the domain and user ID of the Active directory or local machine account that is logged into Windows but won't include user registration or log-in UI. This option is intended for Intranet web sites.
 
 Alternatively, you can create an Intranet site that uses AD authentication by choosing the [On-Premises option under Organizational Accounts](#orgauthonprem). The On-Premises option uses Windows Identity Foundation (WIF) instead of the Windows Authentication module. Some additional steps are required in order to set up the On-Premises option, but WIF enables features that aren't available with the Windows Authentication module. For example, with WIF you can configure application access in Active Directory and query directory data.
 
 <a id="orgauthoptions"></a>
-## Organizational account authentication options
+## Work or school account authentication options
 
 The **Configure Authentication** dialog gives you several options for Azure Active Directory (Azure AD, which includes Office 365) or Windows Server Active Directory (AD) account authentication:
 
@@ -338,28 +265,27 @@ The **Configure Authentication** dialog gives you several options for Azure Acti
 - [Cloud - Multi Organization](#orgauthmulti) (Azure AD, or AD using directory integration with Azure AD)
 - [On-Premises](#orgauthonprem) (AD)
 
-If you want to try one of the Azure AD options but don't have an account yet, [click here to sign up for a Azure AD account](https://go.microsoft.com/fwlink/?LinkId=309942).
+If you want to try one of the Azure AD options but don't have an account yet, [click here to sign up for a Azure AD account](https://account.windowsazure.com/organization).
 
 > [!NOTE]
 > If you choose one of the Azure AD options, your project requires a database and you have to sign in to a global administrator account for your Azure AD tenant. Enter the name and password for an organizational account (for example, admin@contoso.onmicrosoft.com) that has administrative permissions for your Azure AD tenant.
-> 
+>
 > **Don't enter credentials for a Microsoft account (for example, contoso@hotmail.com) in the sign-in dialog box.**
-
 
 <a id="orgauthsingle"></a>
 ### Cloud - Single Organization Authentication
 
 ![Single Organization Authentication](creating-web-projects-in-visual-studio/_static/image24.png)
 
-Choose this option if you want to enable authentication for user accounts that are defined in one Azure AD [tenant](https://technet.microsoft.com/library/jj573650.aspx). For example, the site is contoso.com and it will be made available to employees of the Contoso Company who are in the contoso.onmicrosoft.com tenant. You won't be able to configure Azure AD to allow users from other tenants to access the application.
+Choose this option if you want to enable authentication for user accounts that are defined in one [Azure AD](/azure/active-directory/fundamentals/active-directory-whatis) tenant. For example, the site is contoso.com and it will be made available to employees of the Contoso Company who are in the contoso.onmicrosoft.com tenant. You won't be able to configure Azure AD to allow users from other tenants to access the application.
 
 #### Domain
 
-Enter the Azure AD domain that you want to set up the application in, for example: `contoso.onmicrosoft.com`. If you have a [custom domain](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/), such as `contoso.com` instead of `contoso.onmicrosoft.com`, you can enter that here.
+Enter the Azure AD domain that you want to set up the application in, for example: `contoso.onmicrosoft.com`. If you have a [custom domain](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/), such as `contoso.com` instead of `contoso.onmicrosoft.com`, enter that here.
 
 #### Access Level
 
-If the application needs to query or update directory information by using the Graph API, choose **Single Sign-On, Read Directory Data** or **Single Sign-On, Read and Write Directory Data**. Otherwise, choose **Single Sign-On**. For more information, see [Application Access Levels](https://msdn.microsoft.com/library/windowsazure/b08d91fa-6a64-4deb-92f4-f5857add9ed8#BKMK_AccessLevels) and [Using the Graph API to Query Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151791.aspx).
+If the application needs to query or update directory information by using the Graph API, choose **Single Sign-On, Read Directory Data** or **Single Sign-On, Read and Write Directory Data**. Otherwise, choose **Single Sign-On**. For more information, see [What is authentication?](/azure/active-directory/develop/authentication-scenarios) and [How to: Use the Azure AD Graph API](/azure/active-directory/develop/active-directory-graph-api-quickstart).
 
 #### Application ID URI
 
@@ -369,33 +295,17 @@ By default, if an application that is already provisioned in Azure AD has the sa
 
 If the **Overwrite** check box is cleared, and Visual Studio finds an existing application with the same application ID URI, it creates a new URI by appending a number to the URI it was going to use. For example, suppose the project name is `Example`, you leave the text box blank, you clear the **Overwrite** check box, and the Azure AD tenant already has an application with the URI `https://contoso.onmicrosoft.com/Example`. In that case, a new application will be provisioned with an application ID URI like `https://contoso.onmicrosoft.com/Example_20130619330903`.
 
-#### Provisioning the application in Azure AD
+#### Provision the application in Azure AD
 
 In order to provision the application in Azure AD or connect the project to an existing application, Visual Studio needs the credentials of a global administrator for the domain. When you click **OK** in the **Configure Authentication** dialog box, you are prompted for the user name and password of a global administrator for the domain you specified. Later, when you click **Create Project** in the **New ASP.NET Project** dialog, Visual Studio provisions the application in Azure AD. Note that as part of this process Visual Studio embeds client secret values in the Web.config file that expire one year after creation.
 
-For information about how to create applications that use **Cloud - Single Organization** authentication, see the following resources:
-
-- [Azure Authentication](../2012/windows-azure-authentication.md)
-- [Adding Sign-On to Your Web Application Using Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151790.aspx)
-- [Developing ASP.NET Apps with Azure Active Directory](../../../identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory.md)
-- [Secure ASP.NET Web API with Azure AD and Microsoft OWIN Components](https://msdn.microsoft.com/magazine/dn463788.aspx)
-
-The tutorials have not yet been updated for Visual Studio 2013; some of what the tutorials direct you to do manually is automated in Visual Studio 2013.
-
-<a id="orgauthmulti"></a>
 ### Cloud - Multi Organization Authentication
 
 ![Multiple organization authentication](creating-web-projects-in-visual-studio/_static/image25.png)
 
-Choose this option if you want to enable authentication for user accounts that are defined in multiple Azure AD [tenants](https://technet.microsoft.com/library/jj573650.aspx). For example, the site is contoso.com and it will be made available to employees of the Contoso Company who are in the contoso.onmicrosoft.com tenant, and employees of the Fabrikam Company who are in the fabrikam.onmicrosoft.com tenant.
+Choose this option if you want to enable authentication for user accounts that are defined in multiple Azure AD tenants. For example, the site is contoso.com and it will be made available to employees of the Contoso Company who are in the contoso.onmicrosoft.com tenant, and employees of the Fabrikam Company who are in the fabrikam.onmicrosoft.com tenant.
 
 The settings that you enter and the application provisioning step are similar to [single organization authentication](#orgauthsingle).
-
-For information about how to create applications that use **Cloud - Multi Organization** authentication, see the following resources:
-
-- [Easy Web App Integration with Azure Active Directory, ASP.NET &amp; Visual Studio](https://blogs.msdn.com/b/active_directory_team_blog/archive/2013/06/26/improved-windows-azure-active-directory-integration-with-asp-net-amp-visual-studio.aspx) on the Active Directory Team blog.
-- [Developing Multi-Tenant Web Applications with Azure AD](https://msdn.microsoft.com/library/windowsazure/dn151789.aspx) tutorial. The tutorial hasn't yet been updated for Visual Studio 2013; some of what the tutorial directs you to do manually is automated in Visual Studio 2013.
-- [You Have to Sign Up With Your Own Multiple Organizations ASP.NET App Before You Can Sign In](http://www.cloudidentity.com/blog/2013/10/26/you-have-to-sign-up-with-your-own-multiple-organizations-asp-net-app-before-you-can-sign-in/). Blog by Vittorio Bertocci that explains how to resolve a common problem people encounter when creating a project that uses multi-organization authentication.
 
 <a id="orgauthonprem"></a>
 ### On-Premises Organizational Authentication
@@ -413,8 +323,3 @@ Enter a URL that points to the metadata document. The metadata document contains
 #### Application ID URI
 
 Provide a unique URI that AD can use to identify this application, or leave blank to let Visual Studio create one.
-
-<a id="nextsteps"></a>
-## Next steps
-
-This document has provided some basic help for creating a new ASP.NET web project in Visual Studio 2013. For more information about using for Visual Studio for web development, see [https://www.asp.net/visual-studio/](../../index.md).
